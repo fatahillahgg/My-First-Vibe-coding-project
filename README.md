@@ -1,143 +1,143 @@
 # Momentum
 
-Momentum adalah daily focus planner lokal yang membantu Anda menjawab tiga pertanyaan sederhana:
+Momentum is a local daily focus planner that helps you answer three simple questions:
 
-1. Apa yang perlu saya kerjakan hari ini?
-2. Apa yang sedang saya fokuskan sekarang?
-3. Apa yang sudah saya selesaikan?
+1. What do I need to work on today?
+2. What am I focusing on right now?
+3. What have I completed?
 
-Momentum tidak memerlukan akun atau server. Task, sesi fokus, review, dan pengaturan disimpan di browser pada perangkat yang sedang digunakan.
+Momentum does not require an account or a server. Tasks, focus sessions, reviews, and settings are stored locally in the browser on the device currently being used.
 
-## Fitur utama
+## Key features
 
-- Inbox untuk mencatat, mencari, memfilter, mengedit, dan menghapus task.
-- Rencana harian berisi maksimal lima task yang belum selesai.
-- Pengurutan prioritas dengan kontrol keyboard-friendly.
-- Focus timer 15, 25, 45, atau 60 menit dengan pause, resume, dan cancel.
-- Pemulihan timer yang tetap akurat setelah halaman di-refresh.
-- Notifikasi browser opsional ketika sesi selesai.
-- Ringkasan task dan sesi yang diselesaikan hari ini.
-- Refleksi harian hingga 500 karakter dan riwayat review sebelumnya.
-- Penanganan task terlambat: pindahkan ke besok atau kembalikan ke Inbox.
-- Tema light, dark, atau mengikuti pengaturan sistem.
-- Export, import, dan penghapusan seluruh data dengan konfirmasi.
+- Inbox for logging, searching, filtering, editing, and deleting tasks.
+- Daily plan containing a maximum of five unfinished tasks.
+- Priority sorting with keyboard-friendly controls.
+- Focus timer for 15, 25, 45, or 60 minutes with pause, resume, and cancel capabilities.
+- Timer recovery that remains accurate even after refreshing the page.
+- Optional browser notifications when a session is completed.
+- Summary of tasks and sessions completed today.
+- Daily reflection of up to 500 characters and a history of previous reviews.
+- Overdue task handling: move them to tomorrow or return them to the Inbox.
+- Light, dark, or system-default themes.
+- Full data export, import, and deletion with confirmation prompts.
 
-## Menjalankan Momentum
+## Running Momentum
 
-### Kebutuhan
+### Prerequisites
 
-- Node.js `^20.19.0` atau `>=22.12.0`.
+- Node.js `^20.19.0` or `>=22.12.0`.
 - npm.
-- Browser modern dengan dukungan IndexedDB.
+- A modern browser with IndexedDB support.
 
-### Instalasi
+### Installation
 
 ```sh
 npm install
 npm run dev
 ```
 
-Buka alamat yang ditampilkan Vite di terminal, biasanya `http://localhost:5173`.
+Open the address displayed by Vite in your terminal, usually `http://localhost:5173`.
 
-Untuk menjalankan build produksi secara lokal:
+To run a production build locally:
 
 ```sh
 npm run build
 npm run preview
 ```
 
-### Menjalankan dengan Docker
+### Running with Docker
 
-Build image produksi dan jalankan container:
+Build the production image and run the container:
 
 ```sh
 docker build -t momentum .
 docker run --rm -p 8080:80 --name momentum momentum
 ```
 
-Buka `http://localhost:8080`. Data tetap disimpan di IndexedDB browser, bukan di dalam container, sehingga restart container tidak menghapus workspace pada browser yang sama.
+Open `http://localhost:8080`. Data is still stored in the browser's IndexedDB, not inside the container, so restarting the container will not delete the workspace on the same browser.
 
-Untuk menghentikan container, tekan `Ctrl+C` pada terminal yang menjalankannya.
+To stop the container, press `Ctrl+C` in the terminal running it.
 
-## Cara menggunakan
+## How to use
 
-### 1. Catat task di Inbox
+### 1. Log tasks in the Inbox
 
-Buka **Inbox**, lalu isi judul task. Notes, tag, dan estimasi sesi fokus bersifat opsional. Task dapat diedit, dicari berdasarkan judul, atau difilter berdasarkan tag.
+Open the **Inbox**, then enter a task title. Notes, tags, and estimated focus sessions are optional. Tasks can be edited, searched by title, or filtered by tags.
 
-Task yang dihapus dapat dipulihkan dengan tombol **Undo** selama notifikasi undo masih tersedia.
+Deleted tasks can be recovered using the **Undo** button as long as the undo notification is still available.
 
-### 2. Susun rencana hari ini
+### 2. Plan your day
 
-Pilih **Plan today** pada task di Inbox. Momentum membatasi rencana menjadi maksimal lima task yang belum selesai agar hari tetap realistis.
+Select **Plan today** on a task in the Inbox. Momentum limits the plan to a maximum of five unfinished tasks to keep the day realistic.
 
-Di halaman **Today**, gunakan tombol panah untuk mengubah urutan prioritas. Task juga dapat dikembalikan ke Inbox.
+On the **Today** page, use the arrow buttons to change the priority order. Tasks can also be returned to the Inbox.
 
-### 3. Jalankan sesi fokus
+### 3. Run focus sessions
 
-Pilih **Focus** pada salah satu task Today, tentukan durasi sesi, lalu tekan **Start focus session**.
+Select **Focus** on a task in Today, set the session duration, and click **Start focus session**.
 
-- **Pause** membekukan waktu tersisa.
-- **Resume** melanjutkan dari waktu tersebut.
-- **Cancel session** meminta konfirmasi jika sesi sudah berjalan.
-- Refresh atau membuka ulang halaman tidak mereset timer aktif.
+- **Pause** freezes the remaining time.
+- **Resume** continues from that time.
+- **Cancel session** prompts for confirmation if the session is already running.
+- Refreshing or reopening the page does not reset the active timer.
 
-Momentum hanya mengizinkan satu sesi fokus aktif. Jika izin notifikasi browser diberikan, pemberitahuan muncul ketika sesi selesai.
+Momentum only allows one active focus session. If browser notification permissions are granted, an alert will appear when the session finishes.
 
-### 4. Selesaikan task
+### 4. Complete tasks
 
-Setelah pekerjaan selesai, tekan **Complete** pada task di halaman Today. Task yang selesai dapat dibuka kembali dengan **Reopen**.
+Once the work is done, press **Complete** on the task on the Today page. Completed tasks can be reopened using **Reopen**.
 
-Jika rencana Today sudah penuh ketika task dibuka kembali, task tersebut dikembalikan ke Inbox agar batas lima task tidak terlewati.
+If the Today plan is already full when a task is reopened, the task is returned to the Inbox so the five-task limit is not exceeded.
 
-### 5. Tutup hari dengan Review
+### 5. Close the day with Review
 
-Halaman **Review** menampilkan task dan jumlah sesi fokus yang selesai pada tanggal hari ini. Anda dapat menyimpan satu refleksi hingga 500 karakter.
+The **Review** page displays tasks and the number of focus sessions completed on today's date. You can save one reflection of up to 500 characters.
 
-Task dari hari sebelumnya tetap terlihat sebagai overdue sampai Anda memilih untuk:
+Tasks from previous days remain visible as overdue until you choose to:
 
-- memindahkannya ke besok; atau
-- mengembalikannya ke Inbox.
+- move them to tomorrow; or
+- return them to the Inbox.
 
-Refleksi yang lebih lama tersedia sebagai riwayat read-only.
+Older reflections are available as a read-only history.
 
-## Pengaturan dan backup
+## Settings and backup
 
-Buka **Settings** melalui tombol sekunder di sidebar atau header mobile.
+Open **Settings** via the secondary button in the sidebar or mobile header.
 
-### Tema dan durasi
+### Theme and duration
 
-Pilih tema **System**, **Light**, atau **Dark**, serta durasi fokus default 15, 25, 45, atau 60 menit. Pengaturan bertahan setelah refresh.
+Choose between **System**, **Light**, or **Dark** themes, as well as a default focus duration of 15, 25, 45, or 60 minutes. Settings persist after refreshing.
 
 ### Export data
 
-Tekan **Export JSON backup** untuk mengunduh task, sesi yang sudah berakhir, review, dan pengaturan dalam format Momentum Backup v1.
+Click **Export JSON backup** to download tasks, ended sessions, reviews, and settings in the Momentum Backup v1 format.
 
-Timer yang sedang aktif tidak dimasukkan ke backup karena merupakan state sementara.
+Active timers are not included in the backup because they are temporary states.
 
 ### Import data
 
-Pilih file backup `.json`. Momentum memvalidasi seluruh file dan menampilkan ringkasan sebelum meminta konfirmasi.
+Select a `.json` backup file. Momentum validates the entire file and displays a summary before asking for confirmation.
 
-Import akan mengganti semua data yang ada. Jika import dikonfirmasi, timer aktif dibatalkan dan dibersihkan bersama penggantian data dalam satu transaksi.
+Importing will overwrite all existing data. If the import is confirmed, the active timer is canceled and cleared alongside the data replacement in a single transaction.
 
-### Menghapus seluruh data
+### Erase all data
 
-Gunakan **Erase all data** untuk menghapus task, sesi, review, pengaturan, dan timer aktif. Tindakan ini memerlukan konfirmasi dan tidak dapat di-undo.
+Use **Erase all data** to delete tasks, sessions, reviews, settings, and the active timer. This action requires confirmation and cannot be undone.
 
-## Privasi dan keamanan data
+## Privacy and data security
 
-- Semua data aplikasi disimpan secara lokal menggunakan IndexedDB.
-- Momentum tidak memiliki akun, backend, analytics, atau sinkronisasi antarperangkat.
-- Data pada satu browser tidak otomatis tersedia di browser atau perangkat lain.
-- Menghapus site data, browser profile, atau storage browser dapat menghapus workspace Momentum.
-- Buat backup JSON secara berkala jika data perlu dipertahankan atau dipindahkan.
+- All application data is stored locally using IndexedDB.
+- Momentum has no accounts, backend, analytics, or cross-device synchronization.
+- Data on one browser is not automatically available on other browsers or devices.
+- Clearing site data, browser profiles, or browser storage may delete your Momentum workspace.
+- Create JSON backups regularly if data needs to be retained or migrated.
 
-## Aksesibilitas dan perangkat
+## Accessibility and devices
 
-Momentum dapat digunakan dengan keyboard, menyediakan focus indicator yang terlihat, mendukung skip navigation, dan menghormati `prefers-reduced-motion`. Tampilan telah diverifikasi mulai dari viewport mobile 360 px hingga desktop.
+Momentum is fully keyboard accessible, provides visible focus indicators, supports skip navigation, and respects `prefers-reduced-motion`. The UI has been verified across viewports ranging from 360px mobile to desktop.
 
-## Pemeriksaan proyek
+## Project checks
 
 ```sh
 npm run typecheck
@@ -147,10 +147,10 @@ npm run test:e2e
 npm run build
 ```
 
-Release gate terakhir lulus dengan 95 unit/component tests dan 28 Playwright checks pada mobile dan desktop Chromium.
+The latest release gate passed with 95 unit/component tests and 28 Playwright checks on Chromium mobile and desktop.
 
-## Batasan versi 1
+## Version 1 limitations
 
-Momentum v1 belum menyediakan akun, sinkronisasi antarperangkat, kolaborasi, recurring task, integrasi kalender, atau aplikasi native.
+Momentum v1 does not yet provide accounts, cross-device synchronization, collaboration, recurring tasks, calendar integrations, or native applications.
 
-Dokumentasi produk dan status implementasi tersedia di [requirements](docs/REQUIREMENTS.md), [implementation plan](PLAN.md), dan [progress report](docs/reportprogress.md).
+Product documentation and implementation status are available in the [requirements](docs/REQUIREMENTS.md), [implementation plan](PLAN.md), and [progress report](docs/reportprogress.md).
